@@ -38,4 +38,9 @@ export class UsersService {
     updateUser(id:number, user:CreateUserDto):void{
         this.users = this.users.map(u => u.id == id? user : u);
     }
+
+    deleteUser(id:number):void{
+        const index = this.users.findIndex(user => user.id == id);
+        this.users.splice(index, 1);
+    }
 }
