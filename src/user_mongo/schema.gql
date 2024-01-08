@@ -1,0 +1,14 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type UserType {
+  id: ID!
+  firstName: String!
+  lastName: String!
+  age: Float!
+}
+
+type Query {
+  nessi: UserType!
+}
