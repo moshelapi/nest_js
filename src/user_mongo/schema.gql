@@ -1,0 +1,35 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type UserMongo {
+  id: String!
+  firstName: String
+  lastName: String
+  age: Float
+}
+
+type Query {
+  allusers: [UserMongo!]!
+  userMongo(id: String!): UserMongo!
+}
+
+type Mutation {
+  createUserMongo(createUserMongoInput: CreateUserMongoInput!): UserMongo!
+  updateUserMongo(updateUserMongoInput: UpdateUserMongoInput!): UserMongo!
+  removeUserMongo(id: String!): UserMongo!
+}
+
+input CreateUserMongoInput {
+  id: String!
+  firstName: String!
+  lastName: String!
+  age: Int!
+}
+
+input UpdateUserMongoInput {
+  id: String!
+  firstName: String
+  lastName: String
+  age: Int
+}
