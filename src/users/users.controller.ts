@@ -1,6 +1,7 @@
-import {Body, Controller, Delete, Get, Param, Post, Put,} from '@nestjs/common';
+import {Body, Controller, Delete, Get, Param, Post, Put} from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
+import { IsNumber } from './pipes/validations/validation-if-number.pipe';
 
 @Controller('users')
 export class UsersController {
@@ -10,7 +11,9 @@ export class UsersController {
     return this.users.getAllUsers();
   }
   @Get(':id')
-  getUserById(@Param('id') id: number) {
+  getUserById(@Param('id' , IsNumber) id: number) {
+    console.log(typeof id);
+    
     return this.users.getUserById(id);
   }
   @Post()

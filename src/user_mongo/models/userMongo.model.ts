@@ -14,5 +14,4 @@ export class UserMongo {
   @Field({ nullable: true })
   age: number;
 
-
 }

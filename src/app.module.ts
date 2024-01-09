@@ -7,6 +7,8 @@ import {MongooseModule} from '@nestjs/mongoose';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { join } from 'path';
 import { UsersModule } from './user_mongo/user_mongo.module';
+import { ApolloServerPluginLandingPageLocalDefault } from '@apollo/server/plugin/landingPage/default';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -14,9 +16,10 @@ import { UsersModule } from './user_mongo/user_mongo.module';
       driver: ApolloDriver,
       include: [UsersModule],
       autoSchemaFile: join(process.cwd(), 'src/user_mongo/schema.gql'),
-      playground: true,
+      playground: false,
+      plugins:[ApolloServerPluginLandingPageLocalDefault()]
     }),
-    MongooseModule.forRoot('mongodb://localhost:27017'),
+    MongooseModule.forRoot('mongodb://localhost:27017/user'),
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: 'localhost',
@@ -29,6 +32,9 @@ import { UsersModule } from './user_mongo/user_mongo.module';
     }),
     UserHttpModule,
     UsersModule,
+    AuthModule,
     ],
 })
 export class AppModule {}
+
+

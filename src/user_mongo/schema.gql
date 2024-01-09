@@ -10,7 +10,7 @@ type UserMongo {
 }
 
 type Query {
-  allusers: [UserMongo!]!
+  allUsers: [UserMongo!]!
   userMongo(id: String!): UserMongo!
 }
 
