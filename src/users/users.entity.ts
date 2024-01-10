@@ -1,3 +1,4 @@
+import { Role } from 'src/auth/roles/role.enum';
 import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 
 @Entity()
@@ -13,6 +14,9 @@ export class User {
 
   @Column()
   age: number;
+
+  @Column({nullable: true})
+  roles?: Role;
 
   @Column()
   email: string;

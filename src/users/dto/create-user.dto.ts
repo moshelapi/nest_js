@@ -1,4 +1,5 @@
 import { IsString, IsInt, IsEmail, Min, Max, Length } from 'class-validator';
+import { Role } from 'src/auth/roles/role.enum';
 
 export class CreateUserDto {
   
@@ -14,6 +15,8 @@ export class CreateUserDto {
   @Min(0)
   @Max(150)
   age: number;
+
+  roles?: Role;
 
   @IsEmail()
   email: string;
