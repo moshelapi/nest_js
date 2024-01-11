@@ -12,6 +12,7 @@ export class UsersService {
   ) {}
 
   getAllUsers(): Promise<User[]> {
+    console.log('messi');
     return this.usersRepository.find();
   }
 

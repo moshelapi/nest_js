@@ -1,12 +1,13 @@
-import { Resolver,Query, Mutation, Args } from '@nestjs/graphql';
+import { Resolver,Query, Mutation, Args, Subscription } from '@nestjs/graphql';
 import { CreateUserMongoInput } from './dto/create-user_mongo.input';
 // import { UserType } from './dto/user.dto';
 import { UserMongoService } from './user_mongo.service';
 import { UserMongo } from './models/userMongo.model';
 import { UpdateUserMongoInput } from './dto/update-user_mongo.input';
 
+// const pubSub = new PubSub();
 
-@Resolver(of => UserMongo)
+@Resolver((of) => UserMongo)
 export class UserMongoResolver {
   constructor(private userMongoService: UserMongoService) {}
 
@@ -34,5 +35,7 @@ export class UserMongoResolver {
   removeUserMongo(@Args('id', { type: () => String }) id: string) {
     return this.userMongoService.remove(id);
   }
+
+  @Subscription((returns) => Comment)
 }
 
